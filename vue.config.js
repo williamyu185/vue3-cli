@@ -1,4 +1,20 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const projectPath = path.resolve(__dirname, './');
+const sourceCodePath = path.join(projectPath, '/src');
+const bundleTime = function() {
+	let date = new Date();
+	let year = date.getFullYear();
+	//获取当前月份的日期
+	let mouth = date.getMonth() + 1;
+	let day = date.getDate();
+	let hours = date.getHours();
+	let minutes = date.getMinutes();
+	let seconds = date.getSeconds();
+	let milliseconds = date.getMilliseconds();
+	return (year + '-' + mouth + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ' ' + milliseconds);
+};
 
 module.exports = {
   // 部署应用包时的基本 URL,用法和 webpack 本身的 output.publicPath 一致
