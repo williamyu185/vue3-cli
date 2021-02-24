@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const webpack = require('webpack');
 
 // const ENVJson= require('./env.js');
 
@@ -46,6 +45,13 @@ module.exports = {
   // webpack相关配置
   chainWebpack: (config) => {
     config.resolve.alias.set('@', path.resolve(__dirname, './src'));
+    config.plugin('define').tap(definitions => {
+      Object.assign(definitions[0]['process.env'], {
+        name: '"vuejs"',
+    });
+    console.log(definitions, '5555')
+    return definitions;
+    });
     if (!isDev) {
       // 删除预加载
       config.plugins.delete('preload');
@@ -67,14 +73,16 @@ module.exports = {
   //   }
   // },
   configureWebpack: {
-    plugins: [new CopyWebpackPlugin({
-      patterns: [{
-        //打包的静态资源目录地址
-        from: path.resolve(__dirname, './src/config/configReplace.js'),
-        //打包到dist下面的public
-        to: path.resolve(__dirname, './dist/config.js')
-      }]
-    })],
+    plugins: [
+      new CopyWebpackPlugin({
+        patterns: [{
+          //打包的静态资源目录地址
+          from: path.resolve(__dirname, './src/config/configReplace.js'),
+          //打包到dist下面的public
+          to: path.resolve(__dirname, './dist/config.js')
+        }]
+      })
+    ],
   },
   // css相关配置
   css: {    

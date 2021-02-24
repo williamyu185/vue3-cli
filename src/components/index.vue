@@ -54,7 +54,7 @@ let globalUniquenessCoordinationCliTopLevelObj = window.globalUniquenessCoordina
 // 严禁在未在此文件和globalUniquenessCoordinationCliTopLevelObj对象注册的情况下，在其他文件中直接初始化并使用全局变量
 globalUniquenessCoordinationCliTopLevelObj = {
     ...globalUniquenessCoordinationCliTopLevelObj,
-    // isSmallProgram: /smallProgram/ig.test(__ENV__)
+    isSmallProgram: /smallProgram/ig.test(process.env.NODE_ENV)
 };
 
 export default defineComponent({
