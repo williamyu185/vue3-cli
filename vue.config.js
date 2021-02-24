@@ -25,6 +25,9 @@ const bundleTime = function() {
 	return (year + '-' + mouth + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ' ' + milliseconds);
 };
 
+process.env.VUE_APP_bundleTime = bundleTime();
+process.env.VUE_APP_preventConfigCache = new Date().getTime();
+
 module.exports = {
   // 部署应用包时的基本 URL,用法和 webpack 本身的 output.publicPath 一致
   publicPath: './',  
@@ -32,6 +35,8 @@ module.exports = {
   outputDir: 'dist',  
   // eslint-loader 是否在保存的时候检查
   lintOnSave: false,  
+  //放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录。
+	// assetsDir: 'static',
   // 是否使用包含运行时编译器的 Vue 构建版本
   runtimeCompiler: false,  
   // 生产环境是否生成 sourceMap 文件
@@ -71,7 +76,7 @@ module.exports = {
   devServer: {
     open: true,
     host: 'localhost',
-    port: 8080,
+    port: 8082,
     https: false,
     hotOnly: false,   
     // http 代理配置
@@ -90,6 +95,18 @@ module.exports = {
   pluginOptions: {
 
   },
+  css: {
+		// 启用 CSS modules
+		requireModuleExtension: true,
+		// 是否使用css分离插件
+		extract: true,
+		// 开启 CSS source maps，一般不建议开启
+		sourceMap: false,
+		// css预设器配置项
+		loaderOptions: {
+
+		}
+	}
 //   configureWebpack: {
 //     plugins: [
 //             // new CopyWebpackPlugin({
