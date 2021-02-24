@@ -1,8 +1,17 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const projectPath = path.resolve(__dirname, './');
-const sourceCodePath = path.join(projectPath, '/src');
+// const ENVJson= require('./env.js');
+
+// const nodeENV = process.env.NODE_ENV;
+// const isDev = (nodeENV == 'development');
+// const isLocalServeENV = (nodeENV == 'development');
+
+// const projectPath = path.resolve(__dirname, './');
+// const sourceCodePath = path.join(projectPath, '/src');
+// const distExportPath = path.join(projectPath, `./${ENVJson.ENV_dist}/${nodeENV}`);
+
 const bundleTime = function() {
 	let date = new Date();
 	let year = date.getFullYear();
@@ -80,5 +89,17 @@ module.exports = {
   // 第三方插件配置
   pluginOptions: {
 
-  }
+  },
+//   configureWebpack: {
+//     plugins: [
+//             // new CopyWebpackPlugin({
+//             //     patterns: [{
+//             //         //打包的静态资源目录地址
+//             //         from: path.resolve(__dirname, '../src/config/configReplace.js'),
+//             //         //打包到dist下面的public
+//             //         to: distExportPath + '/config.js'
+//             //     }]
+//             // })
+//         ]
+//     }
 }
