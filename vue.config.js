@@ -1,12 +1,12 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const webpack = require('webpack');
 
 // const ENVJson= require('./env.js');
 
-// const nodeENV = process.env.NODE_ENV;
-// const isDev = (nodeENV == 'development');
-// const isLocalServeENV = (nodeENV == 'development');
+const nodeENV = process.env.NODE_ENV;
+const isDev = (nodeENV == 'development');
 
 // const projectPath = path.resolve(__dirname, './');
 // const sourceCodePath = path.join(projectPath, '/src');
@@ -40,23 +40,42 @@ module.exports = {
   // 是否使用包含运行时编译器的 Vue 构建版本
   runtimeCompiler: false,  
   // 生产环境是否生成 sourceMap 文件
-  productionSourceMap: false,  
+  productionSourceMap: isDev ? true : false,  
   // 生成的 HTML 中的 <link rel="stylesheet"> 和 <script> 标签上启用 Subresource Integrity (SRI)
   integrity: false,  
   // webpack相关配置
   chainWebpack: (config) => {
-    config.resolve.alias
-      .set('@', path.resolve(__dirname, './src'))
-  },
-  configureWebpack: (config) => {    
-    if (process.env.NODE_ENV === 'production') {      
-      // 生产环境
-      config.mode = 'production'
-    } else {      
-      // 开发环境
-      config.mode = 'development'
+    config.resolve.alias.set('@', path.resolve(__dirname, './src'));
+    if (!isDev) {
+      // 删除预加载
+      config.plugins.delete('preload');
+      // 开启代码压缩
+      config.optimization.minimize(true);
+      // 分割代码 相同代码放一块
+      config.optimization.splitChunks({
+        chunks: 'all'
+      });
     }
-  },  
+  },
+  // configureWebpack: (config) => {    
+  //   if(process.env.NODE_ENV === 'production') {
+  //     // 生产环境
+  //     config.mode = 'production';
+  //   }else {
+  //     // 开发环境
+  //     config.mode = 'development';
+  //   }
+  // },
+  configureWebpack: {
+    plugins: [new CopyWebpackPlugin({
+      patterns: [{
+        //打包的静态资源目录地址
+        from: path.resolve(__dirname, './src/config/configReplace.js'),
+        //打包到dist下面的public
+        to: path.resolve(__dirname, './dist/config.js')
+      }]
+    })],
+  },
   // css相关配置
   css: {    
     // 是否分离css（插件ExtractTextPlugin）
@@ -107,16 +126,4 @@ module.exports = {
 
 		}
 	}
-//   configureWebpack: {
-//     plugins: [
-//             // new CopyWebpackPlugin({
-//             //     patterns: [{
-//             //         //打包的静态资源目录地址
-//             //         from: path.resolve(__dirname, '../src/config/configReplace.js'),
-//             //         //打包到dist下面的public
-//             //         to: distExportPath + '/config.js'
-//             //     }]
-//             // })
-//         ]
-//     }
 }
