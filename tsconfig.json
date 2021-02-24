@@ -26,7 +26,8 @@
       "dom",
       "dom.iterable",
       "scripthost"
-    ]
+    ],
+    "allowJs": true
   },
   "include": [
     "./typings/*.ts",

@@ -45,13 +45,6 @@ module.exports = {
   // webpack相关配置
   chainWebpack: (config) => {
     config.resolve.alias.set('@', path.resolve(__dirname, './src'));
-    config.plugin('define').tap(definitions => {
-      Object.assign(definitions[0]['process.env'], {
-        name: '"vuejs"',
-    });
-    console.log(definitions, '5555')
-    return definitions;
-    });
     if (!isDev) {
       // 删除预加载
       config.plugins.delete('preload');
