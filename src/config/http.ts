@@ -2,7 +2,7 @@ import Vue from 'vue';
 import axios from 'axios';
 
 import configHost from './config';
-let globalENVObj = require('../asset/utils/globalENVObj');
+let globalENVObj = require('../assets/utils/globalENVObj');
 
 let currentBrowserLanguage = globalENVObj.globalUniquenessCoordinationCliTopLevelObj.currentBrowserLanguage;
 axios.defaults.timeout = 2*60*1000;

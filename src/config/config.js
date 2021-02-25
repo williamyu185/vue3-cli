@@ -1,5 +1,5 @@
 require('./configReplace');
-let globalENVObj = require('../asset/utils/globalENVObj.js');
+let globalENVObj = require('../assets/utils/globalENVObj.js');
 
 let globalUniquenessCoordinationCliTopLevelObj = globalENVObj.globalUniquenessCoordinationCliTopLevelObj;
 let separateHostFileConfig = globalUniquenessCoordinationCliTopLevelObj.separateHostFileConfig;
