@@ -24,8 +24,6 @@ const bundleTime = function() {
 	return (year + '-' + mouth + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ' ' + milliseconds);
 };
 
-
-
 module.exports = {
   // 部署应用包时的基本 URL,用法和 webpack 本身的 output.publicPath 一致
   publicPath: './',
