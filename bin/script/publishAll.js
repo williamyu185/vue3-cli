@@ -1,8 +1,6 @@
 let child_process = require('child_process');
 let {colorLog} = require('../utils');
 let ENVJson = require('../../env.js');
-let webpackMerge = require('webpack-merge');
-let vueConfig = require('../../vue.config.js');
 
 let publishAll = async (shellMsg) => {
   let {
@@ -29,10 +27,7 @@ let publishAll = async (shellMsg) => {
     let ENVConfig = bale[ENV];
     allPromise.push(new Promise((resolve, reject) => {
       let crossEnv = ENVConfig['NODE_ENV'] || ENV;
-      webpackMerge(vueConfig, {
-        outputDir: `./${vueConfig.ENV_dist}/${crossEnv}`
-      });
-      child_process.exec(ENVConfig.execShell || `vue-cli-service build --mode ${crossEnv}`, {}, (error, stdout, stderr) => {
+      child_process.exec(ENVConfig.execShell || `vue-cli-service build --mode ${crossEnv} --dest ./${ENVJson.ENV_dist}/${crossEnv}`, {}, (error, stdout, stderr) => {
         if (error !== null) {
           console.log(`${error}`);
           reject(error)

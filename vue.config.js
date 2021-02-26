@@ -31,7 +31,7 @@ module.exports = {
   // 部署应用包时的基本 URL,用法和 webpack 本身的 output.publicPath 一致
   publicPath: './',
   // 输出文件目录
-  outputDir: ENVJson.dist,  
+  outputDir: ENVJson.dist,
   // eslint-loader 是否在保存的时候检查
   lintOnSave: false,  
   //放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录。
