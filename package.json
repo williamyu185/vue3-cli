@@ -15,6 +15,12 @@
     "lint": "vue-cli-service lint",
     "build": "vue-cli-service build --mode production"
   },
+  "husky": {
+    "hooks": {
+      "post-merge": "node ./bin/husky.js --git=pullOrMerge",
+      "commit-msg": ""
+    }
+  },
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
@@ -40,6 +46,7 @@
     "copy-webpack-plugin": "^6.4.1",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.0.0-0",
+    "husky": "^5.1.1",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "typescript": "~3.9.3",
