@@ -1,0 +1,128 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+html {
+    font-family: "PingFangSC-Regular", "sans-serif";
+}
+body {
+    font-size: 14px;
+    line-height: 1;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color:transparent;
+    font-family: "PingFangSC-Regular", "sans-serif";
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+ol,
+ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+li {
+    list-style: none;
+}
+.clearfix:after {
+    content: " ";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+input {
+    outline: none;
+    border: 0px;
+    background: none;
+}
+
+/* ============================================================
+   coordination-cli-flex：定义布局为盒模型
+   coordination-cli-flex-v：盒模型垂直布局
+   coordination-cli-flex-1：子元素占据剩余的空间
+   coordination-cli-flex-wrap：子元素可以折行
+   coordination-cli-flex-align-center：子元素垂直居中
+   coordination-cli-flex-align-stretch 子元素垂直拉伸占据全部轴向高度
+   coordination-cli-flex-pack-center：子元素水平居中
+   coordination-cli-flex-pack-justify：子元素两端对齐
+   兼容性：ios 4+、android 2.3+、winphone8+
+   ============================================================ */
+.coordination-cli-flex {
+  display: flex;
+}
+.coordination-cli-flex-v {
+  flex-direction: column;
+}
+.coordination-cli-flex-1 {
+  flex: 1;
+}
+.coordination-cli-flex-wrap {
+  flex-wrap: wrap;
+}
+.coordination-cli-flex-align-center {
+  align-items: center;
+}
+.coordination-cli-flex-align-stretch {
+  align-items: stretch;
+}
+.coordination-cli-flex-pack-center {
+  justify-content: center;
+}
+.coordination-cli-flex-pack-justify {
+  justify-content: space-between;
+}
+
+.index_entry_3GglL {
+  min-width: 1200px;
+  height: 100%;
+  font-size: 15px;
+  overflow-y: auto;
+}
+.index_entry_3GglL .index_mainContent_3p149 {
+  height: 100%;
+  box-sizing: border-box;
+  background: white;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
+  background: white;
+}
+

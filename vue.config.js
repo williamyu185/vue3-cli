@@ -24,8 +24,7 @@ const bundleTime = function() {
 	return (year + '-' + mouth + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ' ' + milliseconds);
 };
 
-process.env.VUE_APP_bundleTime = bundleTime();
-process.env.VUE_APP_preventConfigCache = new Date().getTime();
+
 
 module.exports = {
   // 部署应用包时的基本 URL,用法和 webpack 本身的 output.publicPath 一致
@@ -115,5 +114,23 @@ module.exports = {
 		loaderOptions: {
 
 		}
-	}
+	},
+  pages: {
+    index: {
+      // page 的入口
+      entry: path.resolve(__dirname, './src/main.ts'),
+      // 模板来源
+      template: path.resolve(__dirname, './template/index.html'),
+      // 在 dist/index.html 的输出
+      filename: 'index.html',
+      // 当使用 title 选项时，
+      // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
+      title: '',
+      bundleTime: bundleTime(),
+      preventConfigCache: new Date().getTime(),
+      // 在这个页面中包含的块，默认情况下会包含
+      // 提取出来的通用 chunk 和 vendor chunk。
+      chunks: ['node_modules', 'chunk-common', 'index']
+    }
+  }
 }
