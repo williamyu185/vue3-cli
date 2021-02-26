@@ -26,7 +26,10 @@ let publishOneOfENVToDist = async (shellMsg) => {
   let allPromise = [];
   child_process.execSync(`${cleanAndInstall} && ${cleanDist}`, {stdio: 'inherit'});
   colorLog(`\r\n============   The environments are being packaged,please wait!   ============\r\n\r\n\r\n\r\n`);
-  child_process.execSync(`cross-env NODE_ENV=${crossEnv} webpack --progress --config ./webpack/${ENVConfig.webpackFile || copyOneOfENV}.js`, {stdio: 'inherit'});
+  child_process.execSync(`vue-cli-service build --mode ${crossEnv}`, {stdio: 'inherit'});
+  child_process.execSync(`mkdir -p ./${ENVJson.ENV_dist}/${crossEnv}`, {stdio: 'inherit'});
+  child_process.execSync(`cp -fr ${ENVJson.dist}/. ./${ENVJson.ENV_dist}/${crossEnv}`, {stdio: 'inherit'});
+  child_process.execSync(`rm -rf ${ENVJson.dist}`, {stdio: 'inherit'});
   colorLog(`NODE_ENV ${crossEnv} created successfully!`);
   console.log(`\r\n-----------------------------\r\n\r\n\r\n\r\n`);
   let AdmZip = require('adm-zip');
