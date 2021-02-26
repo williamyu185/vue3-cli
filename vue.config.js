@@ -12,15 +12,15 @@ const isDev = (nodeENV == 'development');
 // const distExportPath = path.join(projectPath, `./${ENVJson.ENV_dist}/${nodeENV}`);
 
 const bundleTime = function() {
-	let date = new Date();
-	let year = date.getFullYear();
+	const date = new Date();
+	const year = date.getFullYear();
 	//获取当前月份的日期
-	let mouth = date.getMonth() + 1;
-	let day = date.getDate();
-	let hours = date.getHours();
-	let minutes = date.getMinutes();
-	let seconds = date.getSeconds();
-	let milliseconds = date.getMilliseconds();
+	const mouth = date.getMonth() + 1;
+	const day = date.getDate();
+	const hours = date.getHours();
+	const minutes = date.getMinutes();
+	const seconds = date.getSeconds();
+	const milliseconds = date.getMilliseconds();
 	return (year + '-' + mouth + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ' ' + milliseconds);
 };
 
@@ -77,17 +77,6 @@ module.exports = {
       })
     ],
   },
-  // css相关配置
-  css: {    
-    // 是否分离css（插件ExtractTextPlugin）
-    extract: true,    
-    // 是否开启 CSS source maps
-    sourceMap: false,   
-    // css预设器配置项
-    loaderOptions: {},    
-    // 是否启用 CSS modules for all css / pre-processor files.
-    requireModuleExtension: false
-  },  
   // 是否使用 thread-loader
   parallel: require('os').cpus().length > 1, 
   // PWA 插件相关配置

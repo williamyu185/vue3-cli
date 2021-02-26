@@ -1,5 +1,5 @@
 (function() {
-    var getGlobalObject = function() {
+    const getGlobalObject = function() {
             if (typeof globalThis !== 'undefined') {
                 return globalThis; 
             }
@@ -14,9 +14,9 @@
             }
             throw new Error('cannot find the global object');
     };
-    var globalObj = getGlobalObject();
+    const globalObj = getGlobalObject();
     globalObj.globalUniquenessCoordinationCliTopLevelObj = globalObj.globalUniquenessCoordinationCliTopLevelObj || {};
-    var globalUniquenessCoordinationCliTopLevelObj = globalObj.globalUniquenessCoordinationCliTopLevelObj;
+    const globalUniquenessCoordinationCliTopLevelObj = globalObj.globalUniquenessCoordinationCliTopLevelObj;
     if(!globalUniquenessCoordinationCliTopLevelObj.separateHostFileConfig) {
         globalUniquenessCoordinationCliTopLevelObj.separateHostFileConfig = {
             development: {

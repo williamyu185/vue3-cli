@@ -1,4 +1,4 @@
-let getGlobalObject = function() {
+const getGlobalObject = function() {
     if (typeof globalThis !== 'undefined') {
         return globalThis; 
     }
@@ -13,5 +13,5 @@ let getGlobalObject = function() {
     }
     throw new Error('cannot find the global object');
 };
-let globalENVObj = getGlobalObject();
+const globalENVObj = getGlobalObject();
 module.exports = globalENVObj;

@@ -3,17 +3,17 @@ export default {
         if(Object.prototype.toString.call(str) === '[object Array]') {
             // return String.fromCharCode.apply(null, new Uint8Array(str)); // 转换为html字符串
             
-            var u8a = new Uint8Array(str);
+            const u8a = new Uint8Array(str);
             
-            var CHUNK_SZ = 0x8000;
-            var c = [];
+            const CHUNK_SZ = 0x8000;
+            const c = [];
             for (var i=0; i < u8a.length; i+=CHUNK_SZ) {
                 c.push(String.fromCharCode.apply(null, u8a.subarray(i, i+CHUNK_SZ)));
             }
             return c.join(""); // 转换为html字符串
         }
-        var base64DecodeChars = new Array(-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1);
-        var c1, c2, c3, c4;
+        const base64DecodeChars = [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1];
+        let c1, c2, c3, c4;
         var i, len, out;
         len = str.length;
         i = 0;
@@ -60,8 +60,8 @@ export default {
         return out;
     },
     utf8to16(str) {
-        var out, i, len, c;
-        var char2, char3;
+        let out, i, len, c;
+        let char2, char3;
         out = "";
         len = str.length;
         i = 0;
@@ -98,11 +98,11 @@ export default {
         return out;
     },
     uint8ToBase64(u8Arr) {
-        var CHUNK_SIZE = 0x8000; //arbitrary number
-        var index = 0;
-        var length = u8Arr.length;
-        var result = '';
-        var slice;
+        const CHUNK_SIZE = 0x8000; //arbitrary number
+        let index = 0;
+        const length = u8Arr.length;
+        let result = '';
+        let slice;
         while (index < length) {
             slice = u8Arr.subarray(index, Math.min(index + CHUNK_SIZE, length));
             result += String.fromCharCode.apply(null, slice);

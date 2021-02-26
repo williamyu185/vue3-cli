@@ -3,7 +3,7 @@ import VueI18n from 'vue-i18n';
 import zh from './zh-CN.js';
 import tw from './zh-TW.js';
 import en from './en-US.js';
-let globalENVObj = require('../../utils/globalENVObj.js');
+const globalENVObj = require('../../utils/globalENVObj.js');
 
 Vue.use(VueI18n);
 

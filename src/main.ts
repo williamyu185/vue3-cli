@@ -4,6 +4,6 @@ import router from './router'
 import store from './store'
 import axios from './config/http';
 
-let app = createApp(Index);
+const app = createApp(Index);
 app.config.globalProperties.$http = axios;
 app.use(store).use(router).mount('#app');

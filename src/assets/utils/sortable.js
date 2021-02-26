@@ -1,14 +1,14 @@
 import Sortable from 'sortablejs';
 
-let sortableBundle = function(id, callback, sortHandle = '.dragSortIcon', dataKey = 'data-row-id') {
-    let tbody = document.querySelector(id + ' .el-table__body-wrapper tbody');
+const sortableBundle = function(id, callback, sortHandle = '.dragSortIcon', dataKey = 'data-row-id') {
+    const tbody = document.querySelector(id + ' .el-table__body-wrapper tbody');
     return new Sortable(tbody, {
         sort: true,
         handle: sortHandle,
         onEnd: (event) => {
-            let dragSortIcon = tbody.querySelectorAll(sortHandle);
-            let len = dragSortIcon.length;
-            let ids = [];
+            const dragSortIcon = tbody.querySelectorAll(sortHandle);
+            const len = dragSortIcon.length;
+            const ids = [];
             for(let i=0; i<len; i++) {
                 ids.push({
                     id: dragSortIcon[i].attributes[dataKey].nodeValue,

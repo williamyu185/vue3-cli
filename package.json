@@ -12,8 +12,7 @@
     "smallProgramTest": "node ./bin/index.js --copyOneOfENVToDist=smallProgramTest",
     "publishAll": "node ./bin/index.js --publishAll",
     "publishTest": "node ./bin/index.js --publishOneOfENVToDist=test",
-    "lint": "vue-cli-service lint",
-    "build": "vue-cli-service build --mode production"
+    "lint": "vue-cli-service lint"
   },
   "husky": {
     "hooks": {

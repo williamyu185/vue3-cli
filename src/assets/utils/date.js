@@ -1,20 +1,20 @@
 export default {
     timeTransform(val, vm) {
-        let today = new Date();
-        let todayYear = today.getFullYear();
-        let todayMonth = today.getMonth() + 1;
-        let todayDay = today.getDate();
-        let todayWeek = today.getDay() || 7;
+        const today = new Date();
+        const todayYear = today.getFullYear();
+        const todayMonth = today.getMonth() + 1;
+        const todayDay = today.getDate();
+        const todayWeek = today.getDay() || 7;
         //获取当天零时时间
-        let todayTimeStamp = new Date(todayYear, todayMonth - 1, todayDay).getTime();
+        const todayTimeStamp = new Date(todayYear, todayMonth - 1, todayDay).getTime();
         //获取这一周周一的零时时间
-        let weekMondayTimeStamp = new Date(todayYear, todayMonth - 1, todayDay + 1 - todayWeek).getTime();
+        const weekMondayTimeStamp = new Date(todayYear, todayMonth - 1, todayDay + 1 - todayWeek).getTime();
         val = parseInt(val);
-        let date = new Date(val);
-        let year = date.getFullYear();
+        const date = new Date(val);
+        const year = date.getFullYear();
         let month = date.getMonth() + 1;
         let day = date.getDate();
-        let dayWeek = date.getDay() || 7;
+        const dayWeek = date.getDay() || 7;
         if(val >= todayTimeStamp) {
             return vm.$t('today');
         }else if (val < todayTimeStamp && val > weekMondayTimeStamp) {
@@ -49,9 +49,9 @@ export default {
         return month + '-' + day;
     },
     timeConvert(date) {
-        let year = date.getFullYear() + '';
-        let month = date.getMonth() + 1 + '';
-        let day = date.getDate() + '';
+        const year = date.getFullYear() + '';
+        const month = date.getMonth() + 1 + '';
+        const day = date.getDate() + '';
         return (year + '-' + (month.length == 1 ? (0 + month) : month) + '-' + (day.length == 1 ? (0 + day) : day));
     }
 };
