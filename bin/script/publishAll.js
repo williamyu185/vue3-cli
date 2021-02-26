@@ -20,27 +20,20 @@ let publishAll = async (shellMsg) => {
     return;
   }
   let {bale} = ENVJson;
-  let allPromise = [];
+  // let allPromise = [];
   child_process.execSync(`${cleanAndInstall} && ${cleanDist}`, {stdio: 'inherit'});
   colorLog(`\r\n============   The environments are being packaged,please wait!   ============\r\n\r\n\r\n\r\n`);
   for(let ENV in bale) {
     let ENVConfig = bale[ENV];
-    allPromise.push(new Promise((resolve, reject) => {
+    // allPromise.push(new Promise((resolve, reject) => {
       let crossEnv = ENVConfig['NODE_ENV'] || ENV;
-      child_process.exec(ENVConfig.execShell || `vue-cli-service build --mode ${crossEnv} --dest ./${ENVJson.ENV_dist}/${crossEnv}`, {}, (error, stdout, stderr) => {
-        if (error !== null) {
-          console.log(`${error}`);
-          reject(error)
-        }else {
-          console.log(`${stdout}`);
-          colorLog(`NODE_ENV ${crossEnv} created successfully!`);
-          console.log(`\r\n-----------------------------\r\n\r\n\r\n\r\n`);
-          resolve(null);
-        }
-      });
-    }));
+      child_process.execSync(ENVConfig.execShell || `vue-cli-service build --mode ${crossEnv}`, {stdio: 'inherit'});
+      child_process.execSync(`mkdir -p ./${ENVJson.ENV_dist}/${crossEnv}`, {stdio: 'inherit'});
+      child_process.execSync(`cp -fr ${ENVJson.dist}/. ./${ENVJson.ENV_dist}/${crossEnv}`, {stdio: 'inherit'});
+      child_process.execSync(`rm -rf ${ENVJson.dist}`, {stdio: 'inherit'});
+    // }));
   }
-  Promise.all(allPromise).then((arr) => {
+  // Promise.all(allPromise).then((arr) => {
     colorLog(`All environments were packaged successfully!\r\n`);
     // new Promise((resolve, reject) => {
     //   child_process.exec(`zip -r ./${ENV_dist}.zip ./${ENV_dist} && rm -rf ./${ENV_dist}`, {}, (error, stdout, stderr) => {
@@ -63,9 +56,9 @@ let publishAll = async (shellMsg) => {
     zip.addLocalFolder(`${ENV_dist}`);
     zip.writeZip(`${ENV_dist}.zip`);
     child_process.exec(`rm -rf ./${ENV_dist}`, {});
-  }).catch((error) => {
-    colorLog(`dist package failed!`, `red`);
-  });
+  // }).catch((error) => {
+  //   colorLog(`dist package failed!`, `red`);
+  // });
 };
 
 module.exports = {
