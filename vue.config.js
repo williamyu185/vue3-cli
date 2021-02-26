@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-// const ENVJson= require('./env.js');
+const ENVJson= require('./env.js');
 
 const nodeENV = process.env.NODE_ENV;
 const isDev = (nodeENV == 'development');
@@ -29,9 +29,9 @@ process.env.VUE_APP_preventConfigCache = new Date().getTime();
 
 module.exports = {
   // 部署应用包时的基本 URL,用法和 webpack 本身的 output.publicPath 一致
-  publicPath: './',  
+  publicPath: './',
   // 输出文件目录
-  outputDir: 'dist',  
+  outputDir: ENVJson.dist,  
   // eslint-loader 是否在保存的时候检查
   lintOnSave: false,  
   //放置生成的静态资源 (js、css、img、fonts) 的 (相对于 outputDir 的) 目录。

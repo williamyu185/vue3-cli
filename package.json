@@ -4,8 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "vue-cli-service serve --mode development",
-    "build": "vue-cli-service build --mode production",
-    "lint": "vue-cli-service lint"
+    "test": "node ./bin/index.js --copyOneOfENVToDist=test",
+    "daily": "node ./bin/index.js --copyOneOfENVToDist=daily",
+    "prev": "node ./bin/index.js --copyOneOfENVToDist=prev",
+    "dist": "node ./bin/index.js --copyOneOfENVToDist=production",
+    "private": "node ./bin/index.js --copyOneOfENVToDist=private",
+    "smallProgramTest": "node ./bin/index.js --copyOneOfENVToDist=smallProgramTest",
+    "publishAll": "node ./bin/index.js --publishAll",
+    "publishTest": "node ./bin/index.js --publishOneOfENVToDist=test",
+    "lint": "vue-cli-service lint",
+    "build": "vue-cli-service build --mode production"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -33,6 +41,7 @@
     "eslint-plugin-vue": "^7.0.0-0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
-    "typescript": "~3.9.3"
+    "typescript": "~3.9.3",
+    "webpack-merge": "^5.7.3"
   }
 }

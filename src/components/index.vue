@@ -60,7 +60,7 @@ globalUniquenessCoordinationCliTopLevelObj = {
 export default defineComponent({
     name: 'index',
     created() {
-        console.log(this.$http)
+        // console.log(this.$http)
     },
     setup() {
 

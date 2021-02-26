@@ -5,9 +5,5 @@ import store from './store'
 import axios from './config/http';
 
 let app = createApp(Index);
-app.mixin({
-    beforeCreate() {
-        this.$http = axios;
-    }
-});
+app.config.globalProperties.$http = axios;
 app.use(store).use(router).mount('#app');

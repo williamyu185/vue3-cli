@@ -4,3 +4,4 @@ interface Window {
 declare type Indexable<T> = {
     [key: string]: T
 };
+declare let process;
