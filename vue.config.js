@@ -24,6 +24,9 @@ const bundleTime = function() {
 	return (year + '-' + mouth + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds + ' ' + milliseconds);
 };
 
+process.env.VUE_APP_bundleTime = bundleTime();
+process.env.VUE_APP_preventConfigCache = new Date().getTime();
+
 module.exports = {
   // 部署应用包时的基本 URL,用法和 webpack 本身的 output.publicPath 一致
   publicPath: './',
