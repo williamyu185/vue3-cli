@@ -57,6 +57,8 @@ globalUniquenessCoordinationCliTopLevelObj = {
     isSmallProgram: /smallProgram/ig.test(process.env.NODE_ENV)
 };
 
+
+
 export default defineComponent({
     name: 'index',
     created() {
