@@ -6,11 +6,10 @@ import axios from './config/http';
 // import 'element-plus/lib/theme-chalk/index.css';
 // import ElementPlus from 'element-plus';
 
-
 const app = createApp(Index);
 app.config.globalProperties.$http = axios;
 app
 .use(store)
-.use(router)
-// .use(ElementPlus)
+.use(router);
+// app.use(ElementPlus)
 app.mount('#app');

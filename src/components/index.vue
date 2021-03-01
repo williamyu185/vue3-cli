@@ -30,7 +30,10 @@
 </div>
 </template>
 <script lang="ts">
-import {defineComponent} from 'vue';
+import {
+    defineComponent,
+    getCurrentInstance
+} from 'vue';
 // npm install --sava url-search-params
 // import URLSearchParams from 'url-search-params';
 // let batchAddAttributes = function(params) {
@@ -61,10 +64,7 @@ globalUniquenessCoordinationCliTopLevelObj = {
 
 export default defineComponent({
     name: 'index',
-    created() {
-    },
     setup() {
-
         return {};
     }
 });
