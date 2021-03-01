@@ -45,6 +45,10 @@ module.exports = {
   // webpack相关配置
   chainWebpack: (config) => {
     config.resolve.alias.set('@', path.resolve(__dirname, './src'));
+    config.plugin('define').tap(args => {
+      args[0]['process.env'].__ENV__ = JSON.stringify(nodeENV);
+      return args;
+    });
     if (!isDev) {
       // 删除预加载
       config.plugins.delete('preload');
