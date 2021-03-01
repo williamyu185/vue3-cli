@@ -9,7 +9,7 @@ axios.defaults.timeout = 2*60*1000;
 axios.defaults.withCredentials = true;
 // axios.defaults.crossDomain = true;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
-axios.interceptors.request.use((config: Indexable<any>) => {
+axios.interceptors.request.use((config: CCIndexable<any>) => {
     const url = config.url;
     const mainHost = configHost.mainHost || '';
     if (!/[http|https]:\/\//gi.test(url)) {
