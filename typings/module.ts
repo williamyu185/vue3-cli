@@ -1,5 +1,5 @@
-declare module 'yyzone'  {
-  export  const  yyzone:any;
-}
+// declare module 'yyzone' {
+//   export const yyzone:any;
+// }
 
 
